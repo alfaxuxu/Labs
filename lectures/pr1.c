@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <conio.h>
 
+#include<fcntl.h>
+#include<errno.h> 
+
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h> 
+
+extern int errno;
+
 void main()
 {
 	//Пример динамического выделения памяти
@@ -83,6 +92,21 @@ void main()
 	printf("closed the fd.\n");
 
 
+
+
+
+	//Рождение процесса
+	//Системный вызов fork()
+	int pid = fork();
+	switch (pid) {
+	case -1:
+		perror("fork");
+		return -1;
+	case 0: // Child
+		printf("my pid = %i, returned pid = %i\n", getpid(), pid);
+		break;
+	default: // Parent
+		printf("my pid = %i, returned pid = %i\n", getpid(), pid); break;
 
 	return 0;
 }
