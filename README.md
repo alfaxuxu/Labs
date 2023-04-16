@@ -1,2 +1,2 @@
 # Labs
-OS security / infocommunications technology
+OS security & infocommunications technology
