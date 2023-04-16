@@ -24,7 +24,16 @@ void main()
 		}
 		else
 		{
-			printf("Error: can't allocate memory");
+			//printf("Error: can't allocate memory");
+			if (errno == ENOMEM)
+			{
+				perror("Malloc error");
+				exit(2);
+			}
+			else
+			{
+				exit(3);
+			}
 		}
 	}
 
