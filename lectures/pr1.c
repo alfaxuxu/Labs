@@ -14,13 +14,10 @@ extern int errno;
 void main()
 {
 	//Пример динамического выделения памяти
-
 	int *array = NULL;
 	unsigned length, i;
-
 	printf("Enter length of array: ");
 	scanf("%d", &length);
-
 	if (length > 0)
 	{
 		//При выделении памяти возвращается указатель.
@@ -46,19 +43,17 @@ void main()
 			}
 		}
 	}
-
 	//Если переменная была инициализирована, то очищаем её
 	if (array != NULL)
 	{
 		free(array);
 	}
-
 	getch();
 
 
 
 
-
+	//Работа с файлами
 	//Пример программы чтения данных
 
 	int sz; //количество прочитанных байт
@@ -107,6 +102,12 @@ void main()
 		break;
 	default: // Parent
 		printf("my pid = %i, returned pid = %i\n", getpid(), pid); break;
+
+
+
+	//Пример использования вызова exec()
+	char* args[] = { "/bin/cat", "--help", NULL };
+	execve("/bin/cat", args, environ);
 
 	return 0;
 }
